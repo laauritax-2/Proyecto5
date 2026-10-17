@@ -1,0 +1,371 @@
+/* El selector * afecta a todos los elementos de la página. */
+* {
+  box-sizing: border-box; /* Importante: el ancho incluye contenido, relleno y borde; ayuda a evitar desbordamientos. */
+}
+
+/* Variables de color: se declaran una vez y luego se reutilizan con var(...). */
+:root {
+  --fondo: #f4f5f7; /* Gris claro de fondo. */
+  --texto: #24272c; /* Color principal del texto. */
+  --gris: #6c727c; /* Color para cargos y textos secundarios. */
+  --negro: #202020; /* Fondo oscuro de algunas tarjetas. */
+  --borde: #292929; /* Color de los bordes. */
+  --amarillo: #ffc928; /* Color de las estrellas. */
+  --blanco: #ffffff; /* Blanco reutilizable. */
+}
+
+/* Estilos generales de toda la página. */
+body {
+  margin: 0; /* Elimina el margen que añade el navegador por defecto. */
+  padding: 36px 20px; /* Espacio alrededor del contenido. */
+  background: var(--fondo); /* Usa la variable de color de fondo. */
+  color: var(--texto); /* Aplica el color principal a los textos. */
+  font-family: Arial, Helvetica, sans-serif; /* Usa una fuente común y fácil de leer. */
+  line-height: 1.5; /* Mejora la separación vertical entre líneas. */
+}
+
+/* =========================
+   2. ENCABEZADO
+   ========================= */
+
+.encabezado {
+  max-width: 850px; /* Evita que el texto del encabezado se extienda demasiado. */
+  margin: 0 auto 32px; /* Centra el encabezado y deja espacio debajo. */
+  text-align: center; /* Centra el texto. */
+}
+
+.etiqueta {
+  margin: 0 0 8px; /* Quita el margen superior y deja un pequeño espacio inferior. */
+  color: #4089ac; /* Color terracota para destacar la etiqueta. */
+  font-size: 0.78rem; /* Letra más pequeña que la normal. */
+  font-weight: bold; /* Pone la etiqueta en negrita. */
+  letter-spacing: 2px; /* Separa las letras. */
+}
+
+h1 {
+  margin: 0; /* Quita el margen predeterminado del título. */
+  font-size: clamp(2rem, 4vw, 3rem); /* Tamaño adaptable: mínimo 2rem, ideal 4vw y máximo 3rem. */
+  line-height: 1.15; /* Mantiene compacto el título. */
+}
+
+.intro {
+  max-width: 650px; /* Limita la longitud de las líneas. */
+  margin: 14px auto 0; /* Deja espacio arriba y centra el párrafo. */
+  color: var(--gris); /* Usa el color gris secundario. */
+}
+
+/* =========================
+   3. DISTRIBUCIÓN PRINCIPAL
+   ========================= */
+
+/* Grid organiza las tarjetas en columnas y filas. */
+.galeria {
+  display: grid; /* Activa CSS Grid. */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Crea dos columnas iguales; minmax(0, 1fr) permite que se encojan sin desbordarse. */
+  gap: 22px; /* Espacio entre las tarjetas y los ejemplos. */
+  max-width: 1050px; /* Limita el ancho total de la galería. */
+  margin: 0 auto; /* Centra la galería. */
+  align-items: stretch; /* Hace que los elementos de una misma fila se estiren para ocupar la altura disponible. */
+}
+
+/* Estilo común de las tarjetas blancas. */
+.tarjeta {
+  min-width: 0; /* Evita que el contenido fuerce a la tarjeta a ser más ancha que su columna. */
+  padding: 25px; /* Espacio interno alrededor del contenido. */
+  background: var(--blanco); /* Fondo blanco. */
+  border: 1.5px solid var(--borde); /* Borde oscuro fino, similar a la maqueta. */
+  border-radius: 22px; /* Esquinas redondeadas. */
+}
+
+/* =========================
+   4. PERFIL DE CADA PERSONA
+   ========================= */
+
+/* Flexbox alinea la foto y los datos en una fila. */
+.persona {
+  display: flex; /* Coloca foto y texto uno al lado del otro. */
+  align-items: center; /* Centra verticalmente la foto con el nombre. */
+  gap: 13px; /* Espacio entre foto y texto. */
+}
+
+.persona img {
+  width: 58px; /* Ancho de la foto. */
+  height: 58px; /* Alto de la foto. */
+  flex-shrink: 0; /* Evita que la imagen se comprima en pantallas pequeñas. */
+  object-fit: cover; /* Recorta la foto para llenar el espacio sin deformarla. */
+  border-radius: 50%; /* Convierte la imagen en un círculo. */
+}
+
+.persona h2 {
+  margin: 0; /* Elimina el margen predeterminado del nombre. */
+  font-size: 1.05rem; /* Tamaño del nombre. */
+  line-height: 1.3; /* Espacio entre líneas del nombre si se parte. */
+}
+
+.persona p {
+  margin: 3px 0 0; /* Pequeña separación sobre el cargo. */
+  color: var(--gris); /* Color secundario para el cargo. */
+  font-size: 0.88rem; /* Cargo un poco más pequeño. */
+}
+
+/* =========================
+   5. EJEMPLO 1: GLOBO OSCURO
+   ========================= */
+
+.ejemplo-globo {
+  padding: 0 10px 0 0; /* Deja un poco de espacio a los lados sin añadir fondo a la sección. */
+}
+
+.globo {
+  position: relative; /* Importante: permite colocar la punta con position:absolute respecto a este globo. */
+  padding: 23px; /* Espacio interno para que el texto no toque los bordes. */
+  background: var(--negro); /* Fondo negro. */
+  color: var(--blanco); /* Texto blanco para tener buen contraste. */
+  border-radius: 22px; /* Redondea las esquinas del globo. */
+}
+
+.globo p {
+  margin: 0 0 18px; /* Quita el margen superior y separa el texto de la frase final. */
+}
+
+/* Crea la punta triangular del globo sin necesitar una imagen. */
+.globo::after {
+  content: ""; /* Necesario para que se dibuje el pseudo-elemento aunque no tenga texto. */
+  position: absolute; /* Permite colocar el triángulo respecto al globo. */
+  left: 32px; /* Coloca la punta cerca del lado izquierdo. */
+  bottom: -13px; /* Baja la punta por debajo de la caja. */
+  border-width: 14px 14px 0 0; /* Define los lados del triángulo. */
+  border-style: solid; /* Convierte los bordes en líneas sólidas que forman el triángulo. */
+  border-color: var(--negro) transparent transparent transparent; /* Solo el borde superior tiene color; los demás son transparentes. */
+}
+
+.persona-debajo {
+  margin: 18px 0 0 8px; /* Separa el perfil del globo y lo mueve ligeramente a la derecha. */
+}
+
+/* =========================
+   6. EJEMPLO 2: TARJETA CLARA
+   ========================= */
+
+.tarjeta-clara {
+  display: flex; /* Activa Flexbox dentro de la tarjeta. */
+  flex-direction: column; /* Coloca la cita arriba y el perfil debajo. */
+  justify-content: space-between; /* Distribuye el espacio y mantiene el perfil hacia abajo si hay altura disponible. */
+  min-height: 245px; /* Da una altura mínima similar a la maqueta. */
+}
+
+.cita {
+  margin: 0 0 22px; /* Elimina el margen superior y separa la cita del siguiente elemento. */
+  font-size: 1.03rem; /* Tamaño legible del testimonio. */
+}
+
+/* =========================
+   7. EJEMPLO 3: FOTO + TARJETA OSCURA
+   ========================= */
+
+.ejemplo-foto {
+  display: grid; /* Usa Grid para poner la foto y la tarjeta en columnas. */
+  grid-template-columns: 0.9fr 1.1fr; /* La foto ocupa un poco menos espacio que la tarjeta oscura. */
+  gap: 14px; /* Espacio entre la foto y la tarjeta. */
+  min-height: 285px; /* Mantiene un tamaño visual consistente. */
+}
+
+.foto-grande {
+  width: 100%; /* Hace que la imagen ocupe el ancho de su columna. */
+  height: 100%; /* Hace que la imagen llene la altura del contenedor. */
+  min-height: 285px; /* Evita que la foto quede demasiado baja. */
+  object-fit: cover; /* Recorta la imagen para llenar el área sin estirarla. */
+  border-radius: 22px; /* Redondea las esquinas de la fotografía. */
+}
+
+.tarjeta-oscura {
+  background: var(--negro); /* Fondo negro. */
+  color: var(--blanco); /* Texto blanco. */
+  border-color: var(--negro); /* Hace que el borde combine con el fondo. */
+  display: flex; /* Permite ordenar el contenido verticalmente. */
+  flex-direction: column; /* Pone estrellas, nombre, cargo y cita en columna. */
+  justify-content: center; /* Centra el conjunto verticalmente. */
+  padding: 24px; /* Espacio interno. */
+}
+
+.estrellas {
+  color: var(--amarillo); /* Estrellas amarillas como en la maqueta. */
+  font-size: 1.45rem; /* Tamaño grande de las estrellas. */
+  letter-spacing: 2px; /* Separa las estrellas. */
+}
+
+.nombre-grande {
+  margin: 10px 0 0; /* Separa el nombre de las estrellas. */
+  font-size: 1.4rem; /* Destaca el nombre. */
+  font-weight: normal; /* Evita que el nombre quede demasiado grueso. */
+}
+
+.cargo-oscuro {
+  margin: 2px 0 16px; /* Espacio pequeño sobre el cargo y mayor debajo. */
+  color: #aeb0b4; /* Gris claro visible sobre el fondo oscuro. */
+}
+
+/* =========================
+   8. EJEMPLO 4: TESTIMONIO ANCHO
+   ========================= */
+
+
+/* CARRUSEL DE TESTIMONIOS */
+
+/* Oculta los botones circulares de selección */
+.tarjeta-carrusel input[type="radio"] {
+  display: none; /* Oculta el elemento */
+}
+
+/* Estilo general de cada testimonio */
+.diapositiva {
+  display: none; /* Oculta los testimonios al inicio */
+  text-align: center; /* Centra el texto */
+}
+
+/* Muestra el testimonio que esté seleccionado */
+#testimonio1:checked ~ .carrusel .slide1,
+#testimonio2:checked ~ .carrusel .slide2,
+#testimonio3:checked ~ .carrusel .slide3 {
+  display: block; /* Hace visible el testimonio elegido */
+}
+
+/* Organiza las flechas y la foto en una fila */
+.selector-perfiles {
+  display: flex; /* Coloca los elementos uno al lado del otro */
+  align-items: center; /* Alinea los elementos verticalmente */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  gap: 15px; /* Deja 15 píxeles entre los elementos */
+  margin: 20px 0 10px; /* Espacio arriba, a los lados y abajo */
+}
+
+/* Diseño de las flechas */
+.flecha {
+  width: 38px; /* Ancho de la flecha */
+  height: 38px; /* Altura de la flecha */
+  border: 1px solid #292929; /* Borde fino de color oscuro */
+  border-radius: 50%; /* Hace circular la flecha */
+  background: white; /* Fondo blanco */
+  color: #202020; /* Color del símbolo */
+  font-size: 26px; /* Tamaño del símbolo */
+  cursor: pointer; /* Muestra una mano al pasar el cursor */
+  display: flex; /* Permite organizar el símbolo */
+  align-items: center; /* Centra el símbolo verticalmente */
+  justify-content: center; /* Centra el símbolo horizontalmente */
+}
+
+/* Cambia el aspecto al pasar el cursor por encima */
+.flecha:hover {
+  background: #202020; /* Fondo oscuro */
+  color: white; /* Símbolo blanco */
+}
+
+/* Diseño de la foto del cliente */
+.perfil-principal {
+  width: 66px; /* Ancho de la foto */
+  height: 66px; /* Altura de la foto */
+  border-radius: 50%; /* Hace que la foto sea redonda */
+  object-fit: cover; /* Ajusta la foto sin deformarla */
+}
+
+/* Diseño del nombre del cliente */
+.nombre-carrusel {
+  margin: 5px 0; /* Espacio arriba y abajo */
+  font-weight: bold; /* Coloca el nombre en negrita */
+}
+
+/* Diseño del cargo del cliente */
+.cargo-carrusel {
+  margin: 3px 0 0; /* Espacio superior de 3 píxeles */
+  color: #6c727c; /* Texto de color gris */
+  font-size: 14px; /* Tamaño de la letra */
+}
+
+/* =========================
+   9. EJEMPLO 5: BORDE DE COLOR
+   ========================= */
+
+.tarjeta-borde-acento {
+  border-color: #b56b4c; /* Usa un borde terracota para diferenciar esta tarjeta. */
+  display: flex; /* Activa Flexbox. */
+  flex-direction: column; /* Coloca comilla, cita y perfil uno debajo del otro. */
+}
+
+.comilla {
+  color: #b56b4c; /* Da color a la comilla decorativa. */
+  font-size: 3.5rem; /* Hace la comilla grande. */
+  height: 42px; /* Reserva espacio para que no empuje demasiado la cita. */
+  line-height: 1; /* Reduce el espacio vertical alrededor de la comilla. */
+}
+
+.tarjeta-borde-acento .persona {
+  margin-top: auto; /* Empuja el perfil hacia abajo si hay espacio libre. */
+}
+
+/* =========================
+   10. ADAPTACIÓN A TABLETAS
+   ========================= */
+
+/* Estas reglas se activan cuando la ventana mide 760 px o menos. */
+@media (max-width: 760px) {
+  .galeria {
+    grid-template-columns: 1fr; /* Cambia a una sola columna para que las tarjetas tengan más espacio. */
+  }
+
+  .tarjeta-carrusel {
+    grid-column: auto; /* Devuelve la tarjeta ancha al flujo normal de una columna. */
+  }
+
+  .ejemplo-foto {
+    grid-template-columns: 0.85fr 1.15fr; /* Conserva las dos partes, ajustando sus proporciones. */
+  }
+}
+
+/* =========================
+   11. ADAPTACIÓN A CELULARES
+   ========================= */
+
+/* Estas reglas se activan en pantallas de 520 px o menos. */
+@media (max-width: 520px) {
+  body {
+    padding: 28px 14px; /* Reduce el espacio exterior en móviles. */
+  }
+
+  .galeria {
+    gap: 16px; /* Reduce la separación entre ejemplos. */
+  }
+
+  .ejemplo-foto {
+    grid-template-columns: 1fr; /* Coloca la foto arriba y la tarjeta oscura debajo. */
+  }
+
+  .foto-grande {
+    height: 240px; /* Da una altura controlada a la foto en el celular. */
+    min-height: 0; /* Quita la altura mínima anterior para evitar una foto excesivamente alta. */
+  }
+
+  .tarjeta {
+    padding: 21px; /* Reduce el espacio interno de las tarjetas. */
+  }
+
+  .tarjeta-carrusel {
+    padding: 28px 18px; /* Reduce el relleno horizontal de la tarjeta ancha. */
+  }
+
+  .selector-perfiles {
+    gap: 10px; /* Acerca las fotos y las flechas para que quepan en la pantalla. */
+  }
+}
+
+/* =========================
+   12. PIE DE PÁGINA
+   ========================= */
+
+.pie {
+  max-width: 2000px; /* Alinea el pie con la galería. */
+  margin: 100px auto 0; /* Lo centra y deja espacio encima. */
+  color: var(--blanco); /* Texto gris secundario. */
+  text-align: center; /* Centra el mensaje. */
+  font-size: 1.13rem; /* Tamaño ligeramente pequeño. */
+  background-color: #202020;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html> <!-- Indica que el documento utiliza HTML5. -->
+<html lang="es"> <!-- Define el idioma principal de la página como español. -->
+<head> <!-- Inicia la configuración del documento. -->
+  <meta charset="UTF-8"> <!-- Permite mostrar tildes, ñ y otros caracteres. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que el diseño se adapte al ancho de móviles y tabletas. -->
+  <title>Proyecto 5 | Tarjetas de testimonio</title> <!-- Nombre que aparece en la pestaña del navegador. -->
+  <link rel="stylesheet" href="styles.css"> <!-- Conecta este archivo con los estilos CSS. -->
+</head> <!-- Termina la configuración. -->
+
+<body> <!-- Empieza el contenido visible de la página. -->
+  <header class="encabezado"> <!-- Encabezado con el nombre del proyecto y una breve introducción. -->
+    <p class="etiqueta">PROYECTO 5 · HTML Y CSS</p> <!-- Etiqueta pequeña sobre el título. -->
+    <h1>Lo que dicen nuestros clientes</h1> <!-- Título principal. -->
+  </header> <!-- Cierra el encabezado. -->
+
+  <main class="galeria"> <!-- Grid principal que organiza los cinco ejemplos. -->
+
+    <!-- EJEMPLO 1: globo de diálogo oscuro y perfil debajo, como la primera tarjeta del PDF. -->
+    <section class="ejemplo ejemplo-globo"> <!-- Sección para el primer tipo de testimonio. -->
+      <div class="globo"> <!-- Caja oscura que contiene la opinión y la punta del globo se crea con CSS. -->
+        <p>He podido convertir mis ideas en proyectos reales. El proceso me ayudó a avanzar mucho más de lo que esperaba.</p> <!-- Texto del testimonio. -->
+        <strong>¡Lo recomiendo!</strong> <!-- Frase final resaltada. -->
+      </div> <!-- Cierra el globo. -->
+      <div class="persona persona-debajo"> <!-- Perfil que se muestra debajo del globo. -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=140&q=80" alt="Foto de Andrés Pérez"> <!-- Fotografía circular con texto alternativo. -->
+        <div> <!-- Agrupa el nombre y el cargo. -->
+          <h2>Andrés Pérez</h2> <!-- Nombre del cliente. -->
+          <p>Desarrollador junior</p> <!-- Cargo o descripción del cliente. -->
+        </div> <!-- Cierra los datos de la persona. -->
+      </div> <!-- Cierra el perfil. -->
+    </section> <!-- Cierra el ejemplo 1. -->
+
+    <!-- EJEMPLO 2: tarjeta clara con borde y perfil en la parte inferior. -->
+    <article class="tarjeta tarjeta-clara"> <!-- Tarjeta blanca con borde oscuro. -->
+      <p class="cita">“Desde que empecé, encontré recursos claros y una guía que me ayudó a mejorar mis habilidades paso a paso.”</p> <!-- Testimonio principal. -->
+      <div class="persona"> <!-- Perfil colocado dentro de la tarjeta. -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=140&q=80" alt="Foto de Laura Gómez"> <!-- Foto del perfil. -->
+        <div> <!-- Agrupa nombre y cargo. -->
+          <h2>Laura Gómez</h2> <!-- Nombre de la clienta. -->
+          <p>Diseñadora web</p> <!-- Ocupación de la clienta. -->
+        </div> <!-- Cierra los datos de la persona. -->
+      </div> <!-- Cierra el perfil. -->
+    </article> <!-- Cierra el ejemplo 2. -->
+
+    <!-- EJEMPLO 3: fotografía grande al lado de una tarjeta oscura con estrellas. -->
+    <div class="ejemplo-foto"> <!-- Contenedor que pone la foto y la tarjeta una al lado de la otra. -->
+      <img class="foto-grande" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85" alt="Retrato de una clienta sonriente"> <!-- Foto grande decorativa de la tarjeta. -->
+      <article class="tarjeta tarjeta-oscura"> <!-- Tarjeta oscura con valoración y testimonio. -->
+        <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div> <!-- Cinco estrellas; aria-label permite entender la valoración con lectores de pantalla. -->
+        <h2 class="nombre-grande">Camila Torres</h2> <!-- Nombre de la persona destacada. -->
+        <p class="cargo-oscuro">Gerente de proyectos</p> <!-- Cargo de la persona. -->
+        <p class="cita">“Es una excelente forma de aprender, crecer y encontrar nuevas ideas. Lo recomiendo a quienes quieren seguir mejorando.”</p> <!-- Opinión de la persona. -->
+      </article> <!-- Cierra la tarjeta oscura. -->
+    </div> <!-- Cierra el conjunto de foto y tarjeta. -->
+
+    <!-- EJEMPLO 4: tarjeta horizontal ancha con testimonio centrado y selección visual de perfiles. -->
+<!-- Sección completa del carrusel de testimonios -->
+<section class="tarjeta tarjeta-carrusel">
+
+  <!-- Opciones para elegir qué testimonio mostrar -->
+  <!-- checked significa que empieza mostrando el primero -->
+  <input type="radio" name="testimonio" id="testimonio1" checked>
+  <input type="radio" name="testimonio" id="testimonio2">
+  <input type="radio" name="testimonio" id="testimonio3">
+
+  <!-- Contenedor que guarda todos los testimonios -->
+  <div class="carrusel">
+
+    <!-- PRIMER TESTIMONIO -->
+    <div class="diapositiva slide1">
+
+      <!-- Opinión del cliente -->
+      <p class="cita cita-centrada">
+        "Es un recurso increíble. Me ha ayudado a aprender y avanzar."
+      </p>
+      <!-- p sirve para escribir un párrafo -->
+
+      <!-- Contenedor de las flechas y la foto -->
+      <div class="selector-perfiles">
+
+        <!-- Flecha izquierda: vuelve al tercer testimonio -->
+        <label class="flecha" for="testimonio3">‹</label>
+
+        <!-- Foto del cliente -->
+        <img class="perfil-principal"
+          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=140&q=80"
+          alt="Foto de Daniel">
+        <!-- src indica la dirección de la foto -->
+        <!-- alt describe la imagen -->
+
+        <!-- Flecha derecha: pasa al segundo testimonio -->
+        <label class="flecha" for="testimonio2">›</label>
+
+      </div>
+      <!-- Aquí termina el contenedor de las flechas y la foto -->
+
+      <!-- Nombre y ocupación del cliente -->
+      <p class="nombre-carrusel">Daniel Ruiz</p>
+      <p class="cargo-carrusel">Estudiante</p>
+
+    </div>
+    <!-- Aquí termina el primer testimonio -->
+
+
+    <!-- SEGUNDO TESTIMONIO -->
+    <div class="diapositiva slide2">
+
+      <!-- Opinión del segundo cliente -->
+      <p class="cita cita-centrada">
+        "Encontré una guía clara y sencilla para mejorar mis habilidades."
+      </p>
+
+      <!-- Contenedor de las flechas y la foto -->
+      <div class="selector-perfiles">
+
+        <!-- Flecha izquierda: vuelve al primer testimonio -->
+        <label class="flecha" for="testimonio1">‹</label>
+
+        <!-- Foto de la cliente -->
+        <img class="perfil-principal"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=140&q=80"
+          alt="Foto de Laura">
+
+        <!-- Flecha derecha: pasa al tercer testimonio -->
+        <label class="flecha" for="testimonio3">›</label>
+
+      </div>
+      <!-- Aquí termina el contenedor de las flechas y la foto -->
+
+      <!-- Nombre y ocupación de la cliente -->
+      <p class="nombre-carrusel">Laura Gómez</p>
+      <p class="cargo-carrusel">Diseñadora web</p>
+
+    </div>
+    <!-- Aquí termina el segundo testimonio -->
+
+
+    <!-- TERCER TESTIMONIO -->
+    <div class="diapositiva slide3">
+
+      <!-- Opinión del tercer cliente -->
+      <p class="cita cita-centrada">
+        "Una experiencia excelente. Aprendí cosas nuevas para mis proyectos."
+      </p>
+
+      <!-- Contenedor de las flechas y la foto -->
+      <div class="selector-perfiles">
+
+        <!-- Flecha izquierda: vuelve al segundo testimonio -->
+        <label class="flecha" for="testimonio2">‹</label>
+
+        <!-- Foto de la cliente -->
+        <img class="perfil-principal"
+          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=140&q=80"
+          alt="Foto de Camila">
+
+        <!-- Flecha derecha: vuelve al primer testimonio -->
+        <label class="flecha" for="testimonio1">›</label>
+
+      </div>
+      <!-- Aquí termina el contenedor de las flechas y la foto -->
+
+      <!-- Nombre y ocupación de la cliente -->
+      <p class="nombre-carrusel">Camila Torres</p>
+      <p class="cargo-carrusel">Gerente de proyectos</p>
+
+    </div>
+    <!-- Aquí termina el tercer testimonio -->
+
+  </div>
+  <!-- Aquí termina el contenedor de todos los testimonios -->
+
+</section>
+<!-- Aquí termina la sección completa del carrusel -->
+
+    <!-- EJEMPLO 5: variación sencilla con borde, comillas destacadas y perfil al inicio. -->
+    <article class="tarjeta tarjeta-borde-acento"> <!-- Quinta tarjeta adicional para practicar otra variación de estilo. -->
+      <div class="comilla" aria-hidden="true">“</div> <!-- Comilla decorativa grande. -->
+      <p class="cita">La atención fue amable y el resultado quedó muy bien. Sin duda, volvería a elegir este servicio.</p> <!-- Texto del testimonio. -->
+      <div class="persona"> <!-- Perfil de quien da la opinión. -->
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=140&q=80" alt="Foto de Sofía Martínez"> <!-- Foto de la clienta. -->
+        <div> <!-- Agrupa nombre y cargo. -->
+          <h2>Sofía Martínez</h2> <!-- Nombre de la clienta. -->
+          <p>Cliente frecuente</p> <!-- Descripción de la clienta. -->
+        </div> <!-- Cierra los datos de la persona. -->
+      </div> <!-- Cierra el perfil. -->
+    </article> <!-- Cierra el ejemplo 5. -->
+
+  </main> <!-- Termina la galería de tarjetas. -->
+
+  <footer class="pie"> <!-- Pie de página. -->
+    <p>Proyecto 5 · Tarjetas de testimonio</p> <!-- Nota final. -->
+  </footer> <!-- Cierra el pie de página. -->
+</body> <!-- Termina el contenido visible. -->
+</html> <!-- Termina el documento HTML. -->
